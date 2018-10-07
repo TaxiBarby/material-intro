@@ -52,6 +52,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -100,6 +102,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
 
     private boolean activityCreated = false;
 
+    private CoordinatorLayout miCoord;
     private ConstraintLayout miFrame;
     private FadeableViewPager miPager;
     private InkPageIndicator miPagerIndicator;
@@ -303,6 +306,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
 
     private void initViews() {
         // bind views
+        miCoord = (CoordinatorLayout) findViewById(R.id.mi_coord);
         miFrame = (ConstraintLayout) findViewById(R.id.mi_frame);
         miPager = (FadeableViewPager) findViewById(R.id.mi_pager);
         miPagerIndicator = (InkPageIndicator) findViewById(R.id.mi_pager_indicator);
@@ -964,6 +968,26 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         } else {
             miButtonBack.setImageResource(R.drawable.mi_ic_previous);
         }
+    }
+    
+    @SuppressWarnings("unused")
+    public void showMessage(@StringRes int resId) {
+        showMessage(resId, Snackbar.LENGTH_LONG);
+    }
+    
+    @SuppressWarnings("unused")
+    public void showMessage(@StringRes int resId, int duration) {
+        showMessage(getString(resId), duration);
+    }
+    
+    @SuppressWarnings("unused")
+    public void showMessage(String message) {
+        showMessage(message, Snackbar.LENGTH_LONG);
+    }
+    
+    @SuppressWarnings("unused")
+    public void showMessage(String message, int duration) {
+        Snackbar.make(miCoord, message, Snackbar.LENGTH_SHORT).show();
     }
 
     @SuppressWarnings("unused")

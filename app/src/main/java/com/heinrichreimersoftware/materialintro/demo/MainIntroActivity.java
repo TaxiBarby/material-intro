@@ -181,10 +181,9 @@ public class MainIntroActivity extends IntroActivity {
                     Slide slide = getSlide(position);
 
                     if (slide == permissionsSlide) {
-                        Snackbar.make(contentView, R.string.label_grant_permissions, Snackbar.LENGTH_LONG)
-                                .show();
+                        showMessage(R.string.label_grant_permissions, Snackbar.LENGTH_LONG);
                     } else if (slide == loginSlide) {
-                        Snackbar.make(contentView, R.string.label_fill_out_form, Snackbar.LENGTH_LONG).show();
+                        showMessage(R.string.label_fill_out_form, Snackbar.LENGTH_LONG);
                     }
                 }
             }
