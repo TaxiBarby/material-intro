@@ -25,13 +25,14 @@
 package com.heinrichreimersoftware.materialintro.demo;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.heinrichreimersoftware.materialintro.demo.databinding.ActivityFinishBinding;
 

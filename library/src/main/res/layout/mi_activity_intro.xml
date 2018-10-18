@@ -22,7 +22,7 @@
   ~ SOFTWARE.
   -->
 
-<android.support.design.widget.CoordinatorLayout android:id="@id/mi_coord"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/mi_coord"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -30,7 +30,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout android:id="@id/mi_frame"
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/mi_frame"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -128,6 +128,6 @@
 
         </TextSwitcher>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
