@@ -27,11 +27,11 @@ package com.heinrichreimersoftware.materialintro.view;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.HackViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-public class SwipeBlockableViewPager extends ViewPager {
+public class SwipeBlockableViewPager extends HackViewPager {
 
     private static final int SWIPE_LOCK_THRESHOLD = 0;
     private static final int SWIPE_UNLOCK_THRESHOLD = 0;

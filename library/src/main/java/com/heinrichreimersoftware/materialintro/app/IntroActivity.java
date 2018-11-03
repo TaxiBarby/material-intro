@@ -361,60 +361,6 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         });
     }
 
-    private void smoothScrollPagerTo(final int position) {
-        if (miPager.isFakeDragging())
-            return;
-
-        ValueAnimator animator = ValueAnimator.ofFloat(miPager.getCurrentItem(), position);
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                if (miPager.isFakeDragging())
-                    miPager.endFakeDrag();
-                miPager.setCurrentItem(position);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                if (miPager.isFakeDragging())
-                    miPager.endFakeDrag();
-            }
-        });
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float position = (Float) animation.getAnimatedValue();
-
-                fakeDragToPosition(position);
-            }
-
-            private boolean fakeDragToPosition(float position) {
-                // The following mimics the underlying calculations in ViewPager
-                float scrollX = miPager.getScrollX();
-                int pagerWidth = miPager.getWidth();
-                int currentPosition = miPager.getCurrentItem();
-
-                if (position > currentPosition && Math.floor(position) != currentPosition && position % 1 != 0) {
-                    miPager.setCurrentItem((int) Math.floor(position), false);
-                } else if (position < currentPosition && Math.ceil(position) != currentPosition && position % 1 != 0) {
-                    miPager.setCurrentItem((int) Math.ceil(position), false);
-                }
-
-                if (!miPager.isFakeDragging() && !miPager.beginFakeDrag())
-                    return false;
-
-                miPager.fakeDragBy(scrollX - pagerWidth * position);
-                return true;
-            }
-        });
-
-        int distance = Math.abs(position - miPager.getCurrentItem());
-
-        animator.setInterpolator(pageScrollInterpolator);
-        animator.setDuration(calculateScrollDuration(distance));
-        animator.start();
-    }
-
     private long calculateScrollDuration(int distance) {
         return Math.round(pageScrollDuration * (distance + Math.sqrt(distance)) / 2);
     }
@@ -459,7 +405,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         }
 
         // Scroll to new position
-        smoothScrollPagerTo(newPosition);
+        miPager.setCurrentItem(position, true, 1);
 
         return !blocked;
     }
@@ -491,7 +437,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         if (lastPosition == miPager.getCurrentItem())
             return 0;
 
-        smoothScrollPagerTo(lastPosition);
+        miPager.setCurrentItem(lastPosition, true, 1);
 
         if (autoplayCounter == 0)
             return 0;
