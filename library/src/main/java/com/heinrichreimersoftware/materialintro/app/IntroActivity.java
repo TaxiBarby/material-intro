@@ -405,7 +405,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         }
 
         // Scroll to new position
-        miPager.setCurrentItem(position, true, 1);
+        miPager.setCurrentItem(newPosition, true, 1);
 
         return !blocked;
     }
