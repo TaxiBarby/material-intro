@@ -204,8 +204,6 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
             }
         }
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
         setContentView(R.layout.mi_activity_intro);
         initViews();
     }
