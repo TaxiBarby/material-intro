@@ -104,6 +104,14 @@ public class FragmentSlide implements Slide, RestorableSlide, ButtonCtaSlide {
     }
 
     @Override
+    public boolean handleFinish() {
+        if (getFragment() instanceof SlideFragment) {
+            return ((SlideFragment) getFragment()).handleFinish();
+        }
+        return true;
+    }
+
+    @Override
     public View.OnClickListener getButtonCtaClickListener() {
         if (getFragment() instanceof ButtonCtaFragment) {
             return ((ButtonCtaFragment) getFragment()).getButtonCtaClickListener();

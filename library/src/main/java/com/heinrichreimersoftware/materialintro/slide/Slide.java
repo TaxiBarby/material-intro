@@ -39,4 +39,6 @@ public interface Slide {
     boolean canGoForward();
 
     boolean canGoBackward();
+
+    boolean handleFinish();
 }

@@ -141,6 +141,11 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
     }
 
     @Override
+    public boolean handleFinish() {
+        return false;
+    }
+
+    @Override
     public View.OnClickListener getButtonCtaClickListener() {
         updatePermissions();
         if (permissions == null) {

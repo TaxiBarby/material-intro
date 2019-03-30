@@ -411,6 +411,15 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
     @Override
     public boolean nextSlide() {
         int currentItem = miPager.getCurrentItem();
+
+        if (positionOffset == 0 && position == adapter.getCount() - 1) {
+            if (!canGoForward(currentItem, false)) {
+                if (handleFinish(currentItem)) {
+                    return false;
+                }
+            }
+        }
+
         return goToSlide(currentItem + 1);
     }
 
@@ -507,19 +516,37 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
         return canGoBackward;
     }
 
+    private boolean handleFinish(int position) {
+        if (position >= getCount()) {
+            return false;
+        }
+        if (position < 0) {
+            return true;
+        }
+
+        if (buttonNextFunction == BUTTON_NEXT_FUNCTION_NEXT && position >= getCount() - 1)
+            //Block finishing when button "next" function is not "finish".
+            return false;
+
+        return getSlide(position).handleFinish();
+    }
 
     private boolean finishIfNeeded() {
         if (positionOffset == 0 && position == adapter.getCount()) {
-            Intent returnIntent = onSendActivityResult(RESULT_OK);
-            if (returnIntent != null)
-                setResult(RESULT_OK, returnIntent);
-            else
-                setResult(RESULT_OK);
-            finish();
-            overridePendingTransition(0, 0);
+            doFinish();
             return true;
         }
         return false;
+    }
+
+    private void doFinish() {
+        Intent returnIntent = onSendActivityResult(RESULT_OK);
+        if (returnIntent != null)
+            setResult(RESULT_OK, returnIntent);
+        else
+            setResult(RESULT_OK);
+        finish();
+        overridePendingTransition(0, 0);
     }
 
     @Nullable
@@ -915,22 +942,22 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
             miButtonBack.setImageResource(R.drawable.mi_ic_previous);
         }
     }
-    
+
     @SuppressWarnings("unused")
     public void showMessage(@StringRes int resId) {
         showMessage(resId, Snackbar.LENGTH_LONG);
     }
-    
+
     @SuppressWarnings("unused")
     public void showMessage(@StringRes int resId, int duration) {
         showMessage(getString(resId), duration);
     }
-    
+
     @SuppressWarnings("unused")
     public void showMessage(String message) {
         showMessage(message, Snackbar.LENGTH_LONG);
     }
-    
+
     @SuppressWarnings("unused")
     public void showMessage(String message, int duration) {
         Snackbar.make(miCoord, message, Snackbar.LENGTH_SHORT).show();

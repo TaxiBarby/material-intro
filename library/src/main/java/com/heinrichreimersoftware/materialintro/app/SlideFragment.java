@@ -37,6 +37,10 @@ public class SlideFragment extends Fragment implements IntroNavigation {
         return true;
     }
 
+    public boolean handleFinish() {
+        return false;
+    }
+
     public IntroActivity getIntroActivity() {
         if (getActivity() instanceof IntroActivity) {
             return (IntroActivity) getActivity();
