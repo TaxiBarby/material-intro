@@ -304,13 +304,13 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
 
     private void initViews() {
         // bind views
-        miCoord = (CoordinatorLayout) findViewById(R.id.mi_coord);
-        miFrame = (ConstraintLayout) findViewById(R.id.mi_frame);
-        miPager = (FadeableViewPager) findViewById(R.id.mi_pager);
-        miPagerIndicator = (InkPageIndicator) findViewById(R.id.mi_pager_indicator);
-        miButtonCta = (TextSwitcher) findViewById(R.id.mi_button_cta);
-        miButtonBack = (ImageButton) findViewById(R.id.mi_button_back);
-        miButtonNext = (ImageButton) findViewById(R.id.mi_button_next);
+        miCoord = findViewById(R.id.mi_coord);
+        miFrame = findViewById(R.id.mi_frame);
+        miPager = findViewById(R.id.mi_pager);
+        miPagerIndicator = findViewById(R.id.mi_pager_indicator);
+        miButtonCta = findViewById(R.id.mi_button_cta);
+        miButtonBack = findViewById(R.id.mi_button_back);
+        miButtonNext = findViewById(R.id.mi_button_next);
 
         if (miButtonCta != null) {
             miButtonCta.setInAnimation(this, R.anim.mi_fade_in);
