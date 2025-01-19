@@ -593,7 +593,7 @@ public class IntroActivity extends AppCompatActivity implements IntroNavigation 
                 }
             } else {
                 TypedValue typedValue = new TypedValue();
-                TypedArray a = obtainStyledAttributes(typedValue.data, new int[]{R.attr.colorPrimary});
+                TypedArray a = obtainStyledAttributes(typedValue.data, new int[]{androidx.appcompat.R.attr.colorPrimary});
                 colorPrimary = a.getColor(0, 0);
                 a.recycle();
             }

@@ -6,8 +6,8 @@ def versionPatch = 2
 def versionBuild = 1 // bump for dogfood builds, public betas, etc.
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion '31.0.0'
+    namespace "com.heinrichreimersoftware.materialintro"
+    compileSdk 31
 
     defaultConfig {
         minSdkVersion 15
