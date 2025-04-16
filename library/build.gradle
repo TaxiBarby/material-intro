@@ -4,15 +4,15 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
 android {
     namespace 'com.heinrichreimersoftware.materialintro'
+    compileSdk 33
 
     defaultConfig {
-        compileSdk 33
         minSdkVersion 15
         targetSdkVersion 29
     }
