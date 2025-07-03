@@ -10,7 +10,7 @@ java {
 
 android {
     namespace 'com.heinrichreimersoftware.materialintro'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         minSdkVersion 15
